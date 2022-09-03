@@ -1,4 +1,4 @@
-Fork of Luke Smith's Auto-Rice Bootstrapping Scripts, modified to use my own base package list and dotfiles. These scripts can be used to set up my default desktop environment in a fresh arch linux install.
+Fork of Luke Smith's Auto-Rice Bootstrapping Scripts, modified to use my own base package list and dotfiles. These scripts can be used to set up a default desktop environment in a fresh arch linux install.
 
 # Luke's Auto-Rice Bootstrapping Scripts (LARBS)
 
