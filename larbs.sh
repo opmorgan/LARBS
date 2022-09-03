@@ -7,9 +7,9 @@
 ### OPTIONS AND VARIABLES ###
 
 dotfilesrepo="https://github.com/opmorgan/dots.git"
-progsfile="https://raw.githubusercontent.com/LukeSmithxyz/LARBS/master/progs.csv"
+progsfile="https://raw.githubusercontent.com/opmorgan/larbs/testing/programs.csv"
 aurhelper="yay"
-repobranch="master"
+repobranch="larbs"
 
 ### FUNCTIONS ###
 
@@ -68,7 +68,8 @@ adduserandpass() {
 	whiptail --infobox "Adding user \"$name\"..." 7 50
 	useradd -m -g wheel -s /bin/zsh "$name" >/dev/null 2>&1 ||
 		usermod -a -G wheel "$name" && mkdir -p /home/"$name" && chown "$name":wheel /home/"$name"
-	export repodir="/home/$name/.local/src"
+	export repodir="/home/$name/src"
+  export dotsdir="/home/$name/dots"
 	mkdir -p "$repodir"
 	chown -R "$name":wheel "$(dirname "$repodir")"
 	echo "$name:$pass1" | chpasswd
@@ -272,8 +273,7 @@ pacman -Qs libxft-git ||
 
 # Install the dotfiles in the user's home directory, but remove .git dir and
 # other unnecessary files.
-putgitrepo "$dotfilesrepo" "/home/$name" "$repobranch"
-rm -rf "/home/$name/.git/" "/home/$name/README.md" "/home/$name/LICENSE" "/home/$name/FUNDING.yml"
+putgitrepo "$dotfilesrepo" "/home/$name/dots" "$repobranch"
 
 # Install vim plugins if not alread present.
 [ ! -f "/home/$name/.config/nvim/autoload/plug.vim" ] && vimplugininstall
@@ -285,24 +285,12 @@ echo "blacklist pcspkr" >/etc/modprobe.d/nobeep.conf
 # Make zsh the default shell for the user.
 chsh -s /bin/zsh "$name" >/dev/null 2>&1
 sudo -u "$name" mkdir -p "/home/$name/.cache/zsh/"
-sudo -u "$name" mkdir -p "/home/$name/.config/abook/"
-sudo -u "$name" mkdir -p "/home/$name/.config/mpd/playlists/"
 
 # dbus UUID must be generated for Artix runit.
 dbus-uuidgen >/var/lib/dbus/machine-id
 
 # Use system notifications for Brave on Artix
 echo "export \$(dbus-launch)" >/etc/profile.d/dbus.sh
-
-# Enable tap to click
-[ ! -f /etc/X11/xorg.conf.d/40-libinput.conf ] && printf 'Section "InputClass"
-        Identifier "libinput touchpad catchall"
-        MatchIsTouchpad "on"
-        MatchDevicePath "/dev/input/event*"
-        Driver "libinput"
-	# Enable left mouse button by tapping
-	Option "Tapping" "on"
-EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 
 # Allow wheel users to sudo with password and allow several system commands
 # (like `shutdown` to run without password).
@@ -311,4 +299,3 @@ echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/
 
 # Last message! Install complete!
 finalize
-#clear
