@@ -1,4 +1,4 @@
-# TAG (A=AUR G=github blank=community repo), NAME IN REPO (or git url),PURPOSE (should be a verb phrase to sound right while installing)
+# TAG, NAME IN REPO (or git url),PURPOSE (should be a verb phrase to sound right while installing)
 
 ,stow,"is a tool for installing many files from one folder tree. [dots/]"
 ,xorg-server,"is the graphical server. [dots/xinitrc]"
