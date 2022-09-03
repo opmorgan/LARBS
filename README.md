@@ -1,7 +1,5 @@
 Fork of Luke Smith's Auto-Rice Bootstrapping Scripts ([LukeSmithxyz/LARBS](https://github.com/LukeSmithxyz/LARBS)), modified to use my own base package list ([programs.csv](programs.csv)) and dotfiles ([opmorgan/dots](https://github.com/opmorgan/dots)). These scripts can be used to set up a default desktop environment in a fresh arch linux install.
 
-# Luke's Auto-Rice Bootstrapping Scripts (LARBS)
-
 ## Installation:
 
 On an Arch-based distribution as root, run the following:
