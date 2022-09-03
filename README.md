@@ -23,8 +23,8 @@ with a fully configured diving-board for work or more customization.
 
 ## Customization
 
-By default, LARBS uses the programs [here in progs.csv](progs.csv) and installs
-[my dotfiles repo (voidrice) here](https://github.com/lukesmithxyz/voidrice) (this fork points to [opmorgan/dots](https://github.com/opmorgan/dots))
+By default, this fork of LARBS uses the programs [here in progs.csv](progs.csv) and installs
+dotfiles from the repo [opmorgan/dots](https://github.com/opmorgan/dots),
 but you can easily change this by either modifying the default variables at the
 beginning of the script or giving the script one of these options:
 
